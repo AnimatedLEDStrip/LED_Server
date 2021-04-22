@@ -33,7 +33,7 @@ plugins {
     id("java-library")
     signing
     id("de.marcphilipp.nexus-publish") version "0.4.0"
-    id("io.codearte.nexus-staging") version "0.22.0"
+    id("io.codearte.nexus-staging") version "0.30.0"
 }
 
 jacoco {
@@ -47,7 +47,7 @@ repositories {
 }
 
 group = "io.github.animatedledstrip"
-version = "1.0.0-pre3-SNAPSHOT"
+version = "1.0.1"
 description = "A library for creating an AnimatedLEDStrip server"
 
 kotlin {
@@ -80,7 +80,7 @@ kotlin {
         val commonMain by getting {
             dependencies {
                 api(kotlin("reflect"))
-                api("io.github.animatedledstrip:animatedledstrip-core:1.0.0")
+                api("io.github.animatedledstrip:animatedledstrip-core:1.0.1")
             }
         }
         val commonTest by getting {
@@ -93,7 +93,7 @@ kotlin {
         }
         val jvmMain by getting {
             dependencies {
-                api("io.github.animatedledstrip:animatedledstrip-core-jvm:1.0.0")
+                api("io.github.animatedledstrip:animatedledstrip-core-jvm:1.0.1")
 
                 api("commons-cli:commons-cli:1.4")
                 implementation("io.github.maxnz:interactive-command-parser:0.1")
@@ -136,7 +136,8 @@ tasks.named<Test>("jvmTest") {
         showExceptions = true
         showStandardStreams = true
         events = setOf(org.gradle.api.tasks.testing.logging.TestLogEvent.FAILED,
-                       org.gradle.api.tasks.testing.logging.TestLogEvent.PASSED)
+                       org.gradle.api.tasks.testing.logging.TestLogEvent.PASSED,
+                       org.gradle.api.tasks.testing.logging.TestLogEvent.SKIPPED)
         exceptionFormat = org.gradle.api.tasks.testing.logging.TestExceptionFormat.FULL
     }
     systemProperties = System.getProperties().map { it.key.toString() to it.value }.toMap()
