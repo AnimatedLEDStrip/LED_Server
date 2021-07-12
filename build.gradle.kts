@@ -88,7 +88,7 @@ kotlin {
                 implementation(kotlin("test-common"))
                 implementation(kotlin("test-annotations-common"))
                 implementation("io.kotest:kotest-assertions-core:4.3.2")
-                implementation("io.kotest:kotest-property:4.3.2")
+                implementation("io.kotest:kotest-property:4.6.1")
             }
         }
         val jvmMain by getting {
